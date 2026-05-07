@@ -18,7 +18,7 @@ class Settings(BaseSettings):
 
     # Groq AI
     GROQ_API_KEY: str = ""
-    GROQ_MODEL: str = "llama-3.3-70b-versatile"
+    GROQ_MODEL: str = "mistral-saba-24b"
 
     # File Storage
     UPLOAD_DIR: str = "uploads"
@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     DEMO_MODE: bool = False
 
     # CORS
-    CORS_ORIGINS: list[str] = ["http://localhost:5173", "http://localhost:3000"]
+    CORS_ORIGINS: list[str] = ["https://adesh-x.vercel.app"]
 
     class Config:
         env_file = ".env"
