@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     DEMO_MODE: bool = False
 
     # CORS
-    CORS_ORIGINS: list[str] = ["https://adesh-x.vercel.app"]
+    CORS_ORIGINS: str = "https://adesh-x.vercel.app"
 
     class Config:
         env_file = ".env"
