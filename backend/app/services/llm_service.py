@@ -3,6 +3,7 @@
 import json
 import logging
 from typing import Optional
+import httpx
 from groq import Groq
 from app.config import settings
 
@@ -16,7 +17,16 @@ def get_groq_client() -> Optional[Groq]:
     """Get or create the Groq client."""
     global _client
     if _client is None and settings.GROQ_API_KEY:
-        _client = Groq(api_key=settings.GROQ_API_KEY)
+        try:
+            # Create explicit httpx client without proxies to avoid initialization errors
+            http_client = httpx.Client(
+                timeout=30.0,
+            )
+            _client = Groq(api_key=settings.GROQ_API_KEY, http_client=http_client)
+        except Exception as e:
+            # Fallback: try simple initialization
+            logger.warning(f"Failed to create Groq client with httpx: {e}, trying simple init")
+            _client = Groq(api_key=settings.GROQ_API_KEY)
     return _client
 
 
