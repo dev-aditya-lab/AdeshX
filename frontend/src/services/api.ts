@@ -7,8 +7,10 @@ import type {
   DashboardSummary, DashboardCasesResponse, UpcomingDeadline
 } from '../types';
 
+const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: `${baseURL}/api`,
   headers: { 'Content-Type': 'application/json' },
 });
 
@@ -38,7 +40,7 @@ export async function deleteDocument(id: string): Promise<void> {
 }
 
 export function getPdfUrl(id: string): string {
-  return `/api/documents/${id}/pdf`;
+  return `${baseURL}/api/documents/${id}/pdf`;
 }
 
 // ── Extraction ───────────────────────────────────────────────────

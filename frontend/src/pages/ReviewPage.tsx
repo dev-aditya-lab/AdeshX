@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   Loader2, CheckCircle, XCircle, AlertTriangle, FileText,
-  Play, Sparkles, ChevronLeft, Clock, Users, Gavel, Building2, Target
+  Play, Sparkles, ChevronLeft, Clock, Users, Gavel, Building2, Target,
 } from 'lucide-react';
 import {
   getDocument, triggerExtraction, getExtraction,
